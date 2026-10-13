@@ -4,3 +4,4 @@
 build/**
 composeApp/build/**
 kotlin-js-store/**
+local.properties

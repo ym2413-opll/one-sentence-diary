@@ -2,6 +2,12 @@ package com.onelinediary.app.data.model
 
 import kotlinx.serialization.Serializable
 
+object AppConfig {
+    const val APP_NAME = "한줄일기"
+    const val VERSION_NAME = "Anima.1aad"
+    const val VERSION_CODE = 1
+}
+
 @Serializable
 data class DiaryEntry(
     val id: String,
@@ -23,7 +29,7 @@ data class StarDiary(
 @Serializable
 data class BackupData(
     val app: String = "OneLineDiary",
-    val version: Int = 1,
+    val version: Int = AppConfig.VERSION_CODE,
     val exportedAt: String,
     val totalCount: Int,
     val entries: List<DiaryEntry>

@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.onelinediary.app.data.autostart.getPlatformAutoStart
+import com.onelinediary.app.data.model.AppConfig
 import com.onelinediary.app.data.notification.ReminderManager
 import com.onelinediary.app.ui.theme.SpaceCardBackground
 import com.onelinediary.app.ui.theme.SpaceSurface
@@ -96,7 +97,7 @@ fun SettingsDialog(
                 // --- 상단 헤더 ---
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = if (isRedPillTaken) "시스템 코어 (빨간약 모드)" else "설정",
+                        text = if (isRedPillTaken) "설정 - 상세" else "설정",
                         color = if (isRedPillTaken) Color(0xFFFF5252) else StarWhite,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
@@ -104,7 +105,7 @@ fun SettingsDialog(
                     Spacer(modifier = Modifier.weight(1f))
                     if (isRedPillTaken) {
                         Text(
-                            text = "DEVELOPER CORE",
+                            text = "v. ${AppConfig.VERSION_NAME}",
                             color = Color(0xFFFF5252).copy(alpha = 0.7f),
                             fontSize = 10.sp,
                             fontFamily = FontFamily.Monospace
@@ -115,7 +116,7 @@ fun SettingsDialog(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = if (isRedPillTaken)
-                        "진실의 코드가 드러났습니다. 일기 생성 풀 및 AI 백엔드를 제어합니다."
+                        "일기장 상세 설정입니다."
                     else
                         "일기장 환경 및 알림을 관리합니다.",
                     color = StarDim,
@@ -143,7 +144,7 @@ fun SettingsDialog(
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    text = "✦ 야간 일기 알림",
+                                    text = "✦ 한밤중 일기 알림",
                                     color = StarGold,
                                     fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold
@@ -311,14 +312,14 @@ fun SettingsDialog(
                         // 빨간약 헤더
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "매트릭스 코어: 일기 풀 & AI 모델 제어",
+                                text = "일기 - 상세",
                                 color = Color(0xFFFF5252),
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold
                             )
                             Spacer(modifier = Modifier.weight(1f))
                             Text(
-                                text = "RED PILL",
+                                text = "v. ${AppConfig.VERSION_NAME}",
                                 color = Color(0xFFFF5252),
                                 fontSize = 10.sp,
                                 fontFamily = FontFamily.Monospace
@@ -345,7 +346,7 @@ fun SettingsDialog(
                                     )
                                     Spacer(modifier = Modifier.weight(1f))
                                     Text(
-                                        text = "$currentPoolSize 개 보관됨",
+                                        text = "${currentPoolSize}개 보관됨",
                                         color = StarlightBlue,
                                         fontSize = 11.sp
                                     )
@@ -353,6 +354,11 @@ fun SettingsDialog(
 
                                 Spacer(modifier = Modifier.height(6.dp))
 
+                                Text(
+                                    text = "• 버전: v. ${AppConfig.VERSION_NAME}",
+                                    color = StarWhite.copy(alpha = 0.85f),
+                                    fontSize = 11.sp
+                                )
                                 Text(
                                     text = "• 현재 일기 기준일: ${DateUtils.getLogicalDiaryDate()}",
                                     color = StarWhite.copy(alpha = 0.85f),
@@ -455,7 +461,7 @@ fun SettingsDialog(
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(8.dp)
                         ) {
-                            Text("• 파란약 복용 (기술 설정 다시 숨기기)", color = StarlightBlue, fontSize = 11.sp)
+                            Text("• 일반 설정으로 되돌아가기", color = StarlightBlue, fontSize = 11.sp)
                         }
                     }
                 }
@@ -484,7 +490,12 @@ fun SettingsDialog(
                                 .clickable { isRedPillTaken = true }
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
                         ) {
-                            Text("RED PILL", color = Color(0xFFFF80AB), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text(
+                                text = "v. ${AppConfig.VERSION_NAME}",
+                                color = Color(0xFFFF80AB),
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold
+                            )
                         }
                     }
                 }
