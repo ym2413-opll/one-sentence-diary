@@ -199,6 +199,116 @@ fun SettingsDialog(
 
                 Spacer(modifier = Modifier.height(14.dp))
 
+                // --- 2-1. 야간 일기 작성 알림 ---
+                var isReminderOn by remember { mutableStateOf(com.onelinediary.app.data.notification.ReminderManager.isReminderEnabled()) }
+                var reminderHour by remember { mutableStateOf(com.onelinediary.app.data.notification.ReminderManager.getReminderHour()) }
+                var testNotifiedNotice by remember { mutableStateOf(false) }
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(SpaceCardBackground)
+                        .padding(14.dp)
+                ) {
+                    Column {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = "✦ 야간 일기 알림",
+                                    color = StarGold,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Spacer(modifier = Modifier.height(2.dp))
+                                Text(
+                                    text = "밤이 깊도록 오늘 일기를 작성하지 않았을 때 알림을 줍니다.",
+                                    color = StarDim.copy(alpha = 0.8f),
+                                    fontSize = 11.sp
+                                )
+                            }
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Switch(
+                                checked = isReminderOn,
+                                onCheckedChange = { checked ->
+                                    isReminderOn = checked
+                                    com.onelinediary.app.data.notification.ReminderManager.setReminderEnabled(checked)
+                                },
+                                colors = SwitchDefaults.colors(
+                                    checkedThumbColor = StarGold,
+                                    checkedTrackColor = StarGold.copy(alpha = 0.4f)
+                                )
+                            )
+                        }
+
+                        if (isReminderOn) {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = "알림 시작 시각",
+                                color = StarlightBlue,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Medium
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                listOf(21 to "오후 9시", 22 to "오후 10시", 23 to "오후 11시").forEach { (hour, label) ->
+                                    val isSelected = reminderHour == hour
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .background(if (isSelected) StarGold.copy(alpha = 0.25f) else Color(0xFF1E2235))
+                                            .border(
+                                                width = 1.dp,
+                                                color = if (isSelected) StarGold else Color.Transparent,
+                                                shape = RoundedCornerShape(8.dp)
+                                            )
+                                            .clickable {
+                                                reminderHour = hour
+                                                com.onelinediary.app.data.notification.ReminderManager.setReminderHour(hour)
+                                            }
+                                            .padding(horizontal = 8.dp, vertical = 6.dp)
+                                    ) {
+                                        Text(
+                                            text = label,
+                                            color = if (isSelected) StarGold else StarWhite.copy(alpha = 0.8f),
+                                            fontSize = 11.sp,
+                                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+                                        )
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.weight(1f))
+
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .background(Color(0xFF263248))
+                                        .clickable {
+                                            com.onelinediary.app.data.notification.ReminderManager.triggerTestNotification()
+                                            testNotifiedNotice = true
+                                        }
+                                        .padding(horizontal = 8.dp, vertical = 6.dp)
+                                ) {
+                                    Text(
+                                        text = if (testNotifiedNotice) "전송됨 ✓" else "알림 테스트",
+                                        color = StarlightBlue,
+                                        fontSize = 11.sp
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(14.dp))
+
                 // --- 3. 즉시 새로고침 버튼 ---
                 Button(
                     onClick = onTriggerRefresh,

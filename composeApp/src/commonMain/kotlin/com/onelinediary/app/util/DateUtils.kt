@@ -62,4 +62,28 @@ object DateUtils {
     fun currentTimestampString(): String {
         return Clock.System.now().toString()
     }
+
+    /**
+     * 현재 시각의 시간(0~23)을 반환합니다.
+     */
+    fun getCurrentHour(
+        epochMillis: Long = Clock.System.now().toEpochMilliseconds(),
+        timeZone: TimeZone = TimeZone.currentSystemDefault()
+    ): Int {
+        val instant = Instant.fromEpochMilliseconds(epochMillis)
+        return instant.toLocalDateTime(timeZone).hour
+    }
+
+    /**
+     * 늦은 밤(지정된 시간 이후부터 익일 오전 5시 59분까지)인지 확인합니다.
+     * 오전 6시는 일기 기준일이 갱신되는 시점입니다.
+     */
+    fun isLateNightTime(
+        reminderStartHour: Int = 21,
+        epochMillis: Long = Clock.System.now().toEpochMilliseconds(),
+        timeZone: TimeZone = TimeZone.currentSystemDefault()
+    ): Boolean {
+        val hour = getCurrentHour(epochMillis, timeZone)
+        return hour >= reminderStartHour || hour < 6
+    }
 }

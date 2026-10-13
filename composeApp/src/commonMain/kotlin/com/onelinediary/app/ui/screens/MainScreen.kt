@@ -88,6 +88,16 @@ fun MainScreen(
     var isBackupDialogOpen by remember { mutableStateOf(false) }
     var isSettingsDialogOpen by remember { mutableStateOf(false) }
     var saveFeedbackMessage by remember { mutableStateOf<String?>(null) }
+    var isReminderBannerDismissed by remember { mutableStateOf(false) }
+
+    val isTodayDiaryEmpty = todayEntry == null || todayEntry.content.isBlank()
+
+    // 늦은 밤 시간에 당일 일기가 미작성 상태라면 시스템 알림 체크 및 1회 발송
+    LaunchedEffect(isTodayDiaryEmpty) {
+        if (isTodayDiaryEmpty) {
+            com.onelinediary.app.data.notification.ReminderManager.checkAndTriggerNotification(isTodayDiaryEmpty = true)
+        }
+    }
 
     // 저장 성공 피드백 3초 후 초기화
     LaunchedEffect(saveFeedbackMessage) {
@@ -220,6 +230,60 @@ fun MainScreen(
                 contentPadding = PaddingValues(bottom = 32.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                // --- 늦은 밤 일기 미작성 알림 배너 ---
+                val isReminderActive = !isReminderBannerDismissed &&
+                    isTodayDiaryEmpty &&
+                    com.onelinediary.app.data.notification.ReminderManager.isReminderEnabled() &&
+                    DateUtils.isLateNightTime(com.onelinediary.app.data.notification.ReminderManager.getReminderHour())
+
+                if (isReminderActive) {
+                    item {
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .border(
+                                    width = 1.dp,
+                                    color = StarGold.copy(alpha = 0.45f),
+                                    shape = RoundedCornerShape(16.dp)
+                                ),
+                            shape = RoundedCornerShape(16.dp),
+                            colors = CardDefaults.cardColors(containerColor = SpaceSurfaceTranslucent)
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(14.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text("✦", color = StarGold, fontSize = 16.sp)
+                                Spacer(modifier = Modifier.width(10.dp))
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = "오늘 밤이 지나가기 전에",
+                                        color = StarGold,
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Spacer(modifier = Modifier.height(2.dp))
+                                    Text(
+                                        text = "아직 오늘의 한 줄이 비어 있습니다. 잠들기 전 마음을 기록해보세요.",
+                                        color = StarWhite.copy(alpha = 0.85f),
+                                        fontSize = 11.sp,
+                                        lineHeight = 16.sp
+                                    )
+                                }
+                                Text(
+                                    text = "×",
+                                    color = StarDim.copy(alpha = 0.6f),
+                                    fontSize = 16.sp,
+                                    modifier = Modifier
+                                        .clip(CircleShape)
+                                        .clickable { isReminderBannerDismissed = true }
+                                        .padding(6.dp)
+                                )
+                            }
+                        }
+                    }
+                }
+
                 // --- 오늘 일기 작성 카드 ---
                 item {
                     Card(
