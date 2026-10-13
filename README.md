@@ -1,3 +1,5 @@
 # 한줄일기
 
-![AI 사용](https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fre-cycle.kr%2F%25EA%25B1%25B4%25EA%25B0%2595%25EA%25B8%25B0%25EB%258A%25A5%25EC%258B%259D%25ED%2592%2588-%25EB%25B2%2584%25EB%25A6%25AC%25EB%258A%2594-%25EB%25B2%2595&opi=89978449)
+## 영양성분표
+- AI 사용<br>
+![AI 사용](ai_used.png)
