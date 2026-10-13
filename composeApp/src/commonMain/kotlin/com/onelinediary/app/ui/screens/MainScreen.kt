@@ -321,6 +321,7 @@ fun MainScreen(
                                 onValueChange = { diaryInputText = it },
                                 placeholder = "오늘 하루를 나타내는 한 문장을 적어보세요...",
                                 maxChars = 100,
+                                enabled = !isSettingsDialogOpen && !isBackupDialogOpen,
                                 onDone = {
                                     if (diaryInputText.isNotBlank()) {
                                         onSaveDiary(currentLogicalDate, diaryInputText)
