@@ -123,7 +123,7 @@ class StarDiaryRepository(
                     if (i < generatedPool.size) {
                         generatedPool[i] = generatedPool[i].copy(
                             content = aiLines[i],
-                            universeOrigin = "어딘가에서 온 익명의 편지"
+                            universeOrigin = "어딘가에서 온 편지"
                         )
                     }
                 }

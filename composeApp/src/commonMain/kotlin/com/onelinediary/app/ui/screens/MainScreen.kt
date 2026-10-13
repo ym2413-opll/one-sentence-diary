@@ -524,7 +524,7 @@ fun MainScreen(
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Text(
-                                text = "✦ 화면을 탭하면 어딘가의 새로운 익명 일기가 떠오릅니다",
+                                text = "✦ 화면을 탭하면 새로운 일기가 떠오릅니다",
                                 color = StarDim.copy(alpha = 0.85f),
                                 fontSize = 11.sp
                             )
