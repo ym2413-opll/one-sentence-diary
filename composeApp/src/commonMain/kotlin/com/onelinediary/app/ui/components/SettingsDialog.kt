@@ -90,7 +90,7 @@ fun SettingsDialog(
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = if (isRedPillTaken) "💊 시스템 코어 (빨간약 모드)" else "설정",
+                        text = if (isRedPillTaken) "시스템 코어 (빨간약 모드)" else "설정",
                         color = if (isRedPillTaken) Color(0xFFFF5252) else StarWhite,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
@@ -128,7 +128,7 @@ fun SettingsDialog(
                 ) {
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("✦ 어딘가의 일기 풀 현황", color = StarGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                            Text("★ 어딘가의 일기 풀 현황", color = StarGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.weight(1f))
                             Text("$currentPoolSize 개 보관됨", color = StarlightBlue, fontSize = 12.sp)
                         }
@@ -232,7 +232,7 @@ fun SettingsDialog(
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFFF9E80)),
                     shape = RoundedCornerShape(10.dp)
                 ) {
-                    Text("🔒 일기장 즉시 잠그기", fontSize = 13.sp)
+                    Text("일기장 즉시 잠그기", fontSize = 13.sp)
                 }
 
                 // --- 5. 빨간약 모드 (기술적 API 설정 이스터에그) ---
@@ -251,7 +251,7 @@ fun SettingsDialog(
                             .padding(14.dp)
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("💊 매트릭스 코어: API Key & Model", color = Color(0xFFFF5252), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            Text("매트릭스 코어: API Key & Model", color = Color(0xFFFF5252), fontSize = 12.sp, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.weight(1f))
                             Text("RED PILL", color = Color(0xFFFF5252), fontSize = 10.sp, fontFamily = FontFamily.Monospace)
                         }
@@ -314,7 +314,7 @@ fun SettingsDialog(
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(8.dp)
                         ) {
-                            Text("🔵 파란약 먹기 (기술 설정 다시 숨기기)", color = StarlightBlue, fontSize = 11.sp)
+                            Text("• 파란약 복용 (기술 설정 다시 숨기기)", color = StarlightBlue, fontSize = 11.sp)
                         }
                     }
                 }
@@ -343,7 +343,7 @@ fun SettingsDialog(
                                 .clickable { isRedPillTaken = true }
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
                         ) {
-                            Text("💊 빨간약", color = Color(0xFFFF80AB), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text("RED PILL", color = Color(0xFFFF80AB), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 }

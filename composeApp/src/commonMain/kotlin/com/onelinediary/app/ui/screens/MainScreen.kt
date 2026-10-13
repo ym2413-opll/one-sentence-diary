@@ -28,6 +28,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -135,7 +140,7 @@ fun MainScreen(
                             .padding(horizontal = 8.dp, vertical = 3.dp)
                     ) {
                         Text(
-                            text = "✦ 어딘가 누군가의 밤",
+                            text = "★ 어딘가 누군가의 밤",
                             color = StarGold.copy(alpha = 0.9f),
                             fontSize = 12.sp
                         )
@@ -160,7 +165,12 @@ fun MainScreen(
                         .clickable { onLockApp() },
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("🔒", fontSize = 16.sp)
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = "잠금",
+                        tint = StarlightBlue,
+                        modifier = Modifier.size(18.dp)
+                    )
                 }
 
                 Spacer(modifier = Modifier.width(8.dp))
@@ -174,7 +184,12 @@ fun MainScreen(
                         .clickable { isBackupDialogOpen = true },
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("💾", fontSize = 16.sp)
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = "백업 및 복원",
+                        tint = StarlightBlue,
+                        modifier = Modifier.size(18.dp)
+                    )
                 }
 
                 Spacer(modifier = Modifier.width(8.dp))
@@ -188,7 +203,12 @@ fun MainScreen(
                         .clickable { isSettingsDialogOpen = true },
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("⚙️", fontSize = 16.sp)
+                    Icon(
+                        imageVector = Icons.Default.Settings,
+                        contentDescription = "설정",
+                        tint = StarlightBlue,
+                        modifier = Modifier.size(18.dp)
+                    )
                 }
             }
 
@@ -361,7 +381,7 @@ fun MainScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "📖 아직 기록된 지난 일기가 없습니다",
+                                    text = "★ 아직 기록된 지난 일기가 없습니다",
                                     color = StarWhite.copy(alpha = 0.9f),
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold
@@ -397,9 +417,9 @@ fun MainScreen(
                                     )
                                     Spacer(modifier = Modifier.weight(1f))
                                     Text(
-                                        text = "✕",
+                                        text = "×",
                                         color = StarDim.copy(alpha = 0.4f),
-                                        fontSize = 12.sp,
+                                        fontSize = 14.sp,
                                         modifier = Modifier
                                             .padding(4.dp)
                                             .clickable { onDeleteDiary(entry.id) }
@@ -440,7 +460,7 @@ fun MainScreen(
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Text(
-                                text = "✦ 화면을 탭하면 어딘가의 새로운 익명 일기가 떠오릅니다",
+                                text = "★ 화면을 탭하면 어딘가의 새로운 익명 일기가 떠오릅니다",
                                 color = StarDim.copy(alpha = 0.85f),
                                 fontSize = 11.sp
                             )

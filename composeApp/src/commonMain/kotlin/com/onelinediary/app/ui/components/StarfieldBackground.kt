@@ -293,7 +293,7 @@ private fun FloatingDiaryDrifter(
         ) {
             Column {
                 Text(
-                    text = "✦ ${diary.universeOrigin}",
+                    text = "★ ${diary.universeOrigin}",
                     color = StarGold.copy(alpha = 0.85f),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.SemiBold

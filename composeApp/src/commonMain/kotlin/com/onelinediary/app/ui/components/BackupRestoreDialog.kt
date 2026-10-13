@@ -234,7 +234,7 @@ fun BackupRestoreDialog(
                                 importStatusMessage = "✓ 성공적으로 ${count}개의 일기를 복원했습니다."
                                 importInputText = ""
                             }.onFailure { err ->
-                                importStatusMessage = "✕ 복원 실패: 잘못된 백업 형식이거나 오류가 있습니다."
+                                importStatusMessage = "× 복원 실패: 잘못된 백업 형식이거나 오류가 있습니다."
                             }
                         },
                         enabled = importInputText.isNotBlank(),

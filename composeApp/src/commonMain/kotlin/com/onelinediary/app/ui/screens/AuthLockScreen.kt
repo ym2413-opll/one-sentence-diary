@@ -74,7 +74,7 @@ fun AuthLockScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = if (isFirstTimeSetup) "🔐 암호 키 설정" else "🔒 한줄일기 잠금 해제",
+                    text = if (isFirstTimeSetup) "암호 키 설정" else "한줄일기 잠금 해제",
                     color = StarWhite,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
