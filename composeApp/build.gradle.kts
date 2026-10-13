@@ -112,6 +112,11 @@ android {
     }
 }
 
+compose.resources {
+    packageOfResClass = "com.onelinediary.app.generated.resources"
+    publicResClass = true
+}
+
 compose.desktop {
     application {
         mainClass = "com.onelinediary.app.MainKt"
