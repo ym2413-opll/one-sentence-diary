@@ -140,7 +140,7 @@ fun MainScreen(
                             .padding(horizontal = 8.dp, vertical = 3.dp)
                     ) {
                         Text(
-                            text = "★ 어딘가 누군가의 밤",
+                            text = "✦ 어딘가 누군가의 밤",
                             color = StarGold.copy(alpha = 0.9f),
                             fontSize = 12.sp
                         )
@@ -381,7 +381,7 @@ fun MainScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "★ 아직 기록된 지난 일기가 없습니다",
+                                    text = "✦ 아직 기록된 지난 일기가 없습니다",
                                     color = StarWhite.copy(alpha = 0.9f),
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold
@@ -460,7 +460,7 @@ fun MainScreen(
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Text(
-                                text = "★ 화면을 탭하면 어딘가의 새로운 익명 일기가 떠오릅니다",
+                                text = "✦ 화면을 탭하면 어딘가의 새로운 익명 일기가 떠오릅니다",
                                 color = StarDim.copy(alpha = 0.85f),
                                 fontSize = 11.sp
                             )

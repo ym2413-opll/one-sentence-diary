@@ -128,7 +128,7 @@ fun SettingsDialog(
                 ) {
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("★ 어딘가의 일기 풀 현황", color = StarGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                            Text("✦ 어딘가의 일기 풀 현황", color = StarGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.weight(1f))
                             Text("$currentPoolSize 개 보관됨", color = StarlightBlue, fontSize = 12.sp)
                         }
