@@ -1,0 +1,9 @@
+.gradle/**
+gradle/**
+gradlew
+gradlew.bat
+.kotlin/**
+.idea/**
+build/**
+composeApp/build/**
+kotlin-js-store/**
