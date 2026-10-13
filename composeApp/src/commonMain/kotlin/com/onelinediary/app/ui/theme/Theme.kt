@@ -10,14 +10,22 @@ import org.jetbrains.compose.resources.Font
 import com.onelinediary.app.generated.resources.Res
 import com.onelinediary.app.generated.resources.pretendard_regular
 import com.onelinediary.app.generated.resources.pretendard_bold
+import com.onelinediary.app.generated.resources.noto_sans_symbols2
 
 @Composable
 fun getAppFontFamily(): FontFamily {
     return FontFamily(
+        // 1. Primary 본문/제목 글꼴: Pretendard (한글, 영문, 숫자 고품질 렌더링)
         Font(Res.font.pretendard_regular, FontWeight.Normal, FontStyle.Normal),
         Font(Res.font.pretendard_regular, FontWeight.Medium, FontStyle.Normal),
         Font(Res.font.pretendard_bold, FontWeight.Bold, FontStyle.Normal),
-        Font(Res.font.pretendard_bold, FontWeight.SemiBold, FontStyle.Normal)
+        Font(Res.font.pretendard_bold, FontWeight.SemiBold, FontStyle.Normal),
+
+        // 2. Fallback 특수 기호 글꼴: Noto Sans Symbols 2 (Primary에 없는 특수 기호 자동 fallback)
+        Font(Res.font.noto_sans_symbols2, FontWeight.Normal, FontStyle.Normal),
+        Font(Res.font.noto_sans_symbols2, FontWeight.Medium, FontStyle.Normal),
+        Font(Res.font.noto_sans_symbols2, FontWeight.Bold, FontStyle.Normal),
+        Font(Res.font.noto_sans_symbols2, FontWeight.SemiBold, FontStyle.Normal)
     )
 }
 
