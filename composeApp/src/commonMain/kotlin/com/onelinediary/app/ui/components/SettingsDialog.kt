@@ -491,7 +491,7 @@ fun SettingsDialog(
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
                         ) {
                             Text(
-                                text = "v. ${AppConfig.VERSION_NAME}",
+                                text = "상세 설정",
                                 color = Color(0xFFFF80AB),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold
